@@ -26,6 +26,17 @@
       }
     </script>
     
+    <h2>Input</h2>
+      <input type="text" id="nameInput" placeholder="名前を入力">
+      <button onclick="showName()">表示</button>
+      <p id="output"></p>
+    <script>
+      function showName() {
+        const name = document.getElementById("nameInput").value;
+        document.getElementById("output").textContent = name + " さん、こんにちは！";
+      }
+    </script>
+    
     <p>エンジニア3年目</p>
     <p>個人開発始めました</p>
   </div>
