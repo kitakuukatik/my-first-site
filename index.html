@@ -19,43 +19,17 @@
     <h2>Message</h2>
       <p id="message">ボタンを押してください</p>
       <button onclick="changeMessage()">押す</button>
-
-    <script>
-      function changeMessage() {
-      document.getElementById("message").textContent = "よくできました！";
-      }
-    </script>
     
     <h2>Input</h2>
       <input type="text" id="nameInput" placeholder="名前を入力">
       <button onclick="showName()">表示</button>
       <p id="output"></p>
-    <script>
-      function showName() {
-        const name = document.getElementById("nameInput").value;
-        document.getElementById("output").textContent = name + " さん、こんにちは！";
-      }
-    </script>
 
     <h2>Counter</h2>
     <p id="count">0</p>
 
     <button onclick="countUp()">+1</button>
     <button onclick="resetCount()">リセット</button>
-
-    <script>
-      let count = 0;
-
-      function countUp() {
-        count++;
-        document.getElementById("count").textContent = count;
-      }
-
-      function resetCount() {
-        count = 0;
-        document.getElementById("count").textContent = count;
-      }
-    </script>
     
     <p>エンジニア3年目</p>
     <p>個人開発始めました</p>
