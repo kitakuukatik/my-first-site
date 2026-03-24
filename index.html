@@ -36,6 +36,26 @@
         document.getElementById("output").textContent = name + " さん、こんにちは！";
       }
     </script>
+
+    <h2>Counter</h2>
+    <p id="count">0</p>
+
+    <button onclick="countUp()">+1</button>
+    <button onclick="resetCount()">リセット</button>
+
+    <script>
+      let count = 0;
+
+      function countUp() {
+        count++;
+        document.getElementById("count").textContent = count;
+      }
+
+      function resetCount() {
+        count = 0;
+        document.getElementById("count").textContent = count;
+      }
+    </script>
     
     <p>エンジニア3年目</p>
     <p>個人開発始めました</p>
