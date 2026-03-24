@@ -7,8 +7,10 @@ body {
 
 .container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 40px auto;
   padding: 40px;
+  background: #1a1a1a;
+  border-radius: 10px;
 }
 
 h1 {
