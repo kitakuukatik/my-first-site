@@ -26,7 +26,16 @@ function addTodo() {
   if (text === "") return;
 
   const li = document.createElement("li");
-  li.textContent = text;
+  li.textContent = text + " ";
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "削除";
+
+  deleteButton.onclick = function() {
+    li.remove();
+  };
+
+  li.appendChild(deleteButton);
 
   document.getElementById("todoList").appendChild(li);
 
