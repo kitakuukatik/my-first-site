@@ -1,33 +1,28 @@
-function changeMessage() {
-  document.getElementById("message").textContent = "よくできました！";
-}
-
-function showName() {
-  const name = document.getElementById("nameInput").value;
-  document.getElementById("output").textContent = name + " さん、こんにちは！";
-}
-
-let count = 0;
-
-function countUp() {
-  count++;
-  document.getElementById("count").textContent = count;
-}
-
-function resetCount() {
-  count = 0;
-  document.getElementById("count").textContent = count;
-}
-
-// TODOリストを保存する配列
+// TODOリストを管理する配列
 let todos = [];
 
-//
+// ページ読み込み時に実行
+window.onload = function() {
+
+  // 保存されてるデータを取得
+  const saved = localStorage.getItem("todos");
+
+  if (saved !== null) {
+    // JSON文字列 → 配列に変換
+    todos = JSON.parse(saved);
+
+    // 画面に表示
+    renderTodos();
+  }
+};
+
+// TODOを追加
 function addTodo() {
 
   const input = document.getElementById("todoInput");
   const text = input.value;
 
+  // 空なら何もしない
   if (text === "") return;
 
   // 配列に追加
@@ -36,13 +31,14 @@ function addTodo() {
   // 表示更新
   renderTodos();
 
-  input.value = "";
-
   // 保存
   saveTodos();
+
+  // 入力欄リセット
+  input.value = "";
 }
 
-// TODOリストを画面に表示する
+// TODOを描画
 function renderTodos() {
 
   const list = document.getElementById("todoList");
@@ -50,12 +46,13 @@ function renderTodos() {
   // 一旦全部消す
   list.innerHTML = "";
 
-  // 配列の中身を1つずつ表示
+  // 配列を1つずつ処理
   todos.forEach(function(todo, index) {
 
     const li = document.createElement("li");
     li.textContent = todo + " ";
 
+    // 削除ボタン
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "削除";
 
@@ -80,25 +77,11 @@ function saveTodos() {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-// ページ読み込み時に実行
-window.onload = function() {
-
-  const saved = localStorage.getItem("todos");
-
-  if (saved !== null) {
-    todos = JSON.parse(saved);
-    renderTodos();
-  }
-};
-
-// 入力欄を取得
+// Enterキー対応
 const input = document.getElementById("todoInput");
 
-// キーボード入力を監視
 input.addEventListener("keydown", function(event) {
-  // Enterキーが押されたかチェック
   if (event.key === "Enter") {
-    // 入力内容をリストに追加s
     addTodo();
   }
 });
